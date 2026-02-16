@@ -6,8 +6,34 @@
     <title>Dice Game</title>
 </head>
 <body>
-    <style>
-        
-    </style>
+    <h1>Dice Game!</h1>
+
+    <!-- Game info -->
+     <p><strong>Turn:</strong> {{ game.turn }}</p>
+     <p><strong>Point:</strong> {{ game.point if game.point else "None" }}</p>
+     <p><strong>Result:</strong> {{ game.result }}</p>
+
+     <!-- if game not finished, show form -->
+      {% if not game.finished %}
+      <form method="POST">
+
+            <!-- user can type a number -->
+             <label>Enter a roll (2-12):</label>
+             <input type="number" name="user_roll" min="2" max="12">
+            
+             <!-- submit typed number -->
+              <button type="submit">Submit Roll</button>
+
+              <!-- or roll randomly -->
+               <button type="submit" name="random" value="1">Random Roll</button>
+      </form>
+
+      {% else %}
+      <!-- if the game is finished, show restart link -->
+       <p><strong>Game Over!</strong></p>
+       <a href="/new">Start New Game</a>
+      {% endif %}
+
+
 </body>
 </html>
