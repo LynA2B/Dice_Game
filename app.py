@@ -45,6 +45,7 @@ def dice_game():
     # show webpage
     return render_template("dice.html", game=game)
 
+# shown when clicked on Start New Game
 @app.route("/new")
 def new_game():
     session.pop("game", None)
